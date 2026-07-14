@@ -150,7 +150,7 @@ function UsersPage() {
         </div>
       </div>
 
-      <div className="surface-card rounded-2xl p-4 overflow-auto">
+      <div className="surface-card rounded-2xl p-4 overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>

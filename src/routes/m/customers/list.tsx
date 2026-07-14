@@ -4,11 +4,13 @@ import { RequireAuth } from "@/components/layout/RequireAuth";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Eye, Edit, Trash2 } from "lucide-react";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 
 export const Route = createFileRoute("/m/customers/list")({
   component: () => (
@@ -216,26 +218,26 @@ function CustomersPage() {
         ))}
       </div>
 
-      <div className="surface-card rounded-2xl p-4 overflow-x-auto">
-        <table className="min-w-full divide-y divide-slate-200 text-sm">
-          <thead>
-            <tr>
-              <th className="px-3 py-3 text-left font-semibold">Customer</th>
-              <th className="px-3 py-3 text-left font-semibold">Email</th>
-              <th className="px-3 py-3 text-left font-semibold">Phone</th>
-              <th className="px-3 py-3 text-left font-semibold">City</th>
-              <th className="px-3 py-3 text-left font-semibold">Wallet</th>
-              <th className="px-3 py-3 text-left font-semibold">Rides</th>
-              <th className="px-3 py-3 text-left font-semibold">Rating</th>
-              <th className="px-3 py-3 text-left font-semibold">Status</th>
-              <th className="px-3 py-3 text-left font-semibold">Joined</th>
-              <th className="px-3 py-3 text-left font-semibold">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-200">
+      <div className="surface-card rounded-2xl p-4">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Customer</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Phone</TableHead>
+              <TableHead>City</TableHead>
+              <TableHead>Wallet</TableHead>
+              <TableHead>Rides</TableHead>
+              <TableHead>Rating</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Joined</TableHead>
+              <TableHead>Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {pageData.map((customer) => (
-              <tr key={customer.id}>
-                <td className="px-3 py-3">
+              <TableRow key={customer.id}>
+                <TableCell>
                   <div className="flex items-center gap-3">
                     <Avatar className="h-10 w-10">
                       {customer.avatar ? (
@@ -249,16 +251,16 @@ function CustomersPage() {
                       <div className="text-xs text-muted-foreground">{customer.id}</div>
                     </div>
                   </div>
-                </td>
-                <td className="px-3 py-3">{customer.email}</td>
-                <td className="px-3 py-3">{customer.phone}</td>
-                <td className="px-3 py-3">{customer.city}</td>
-                <td className="px-3 py-3">{formatCurrency(customer.walletBalance)}</td>
-                <td className="px-3 py-3">{customer.totalRides}</td>
-                <td className="px-3 py-3">{customer.rating.toFixed(1)}</td>
-                <td className="px-3 py-3">{renderStatusBadge(customer.status)}</td>
-                <td className="px-3 py-3">{formatDate(customer.joinedAt)}</td>
-                <td className="px-3 py-3">
+                </TableCell>
+                <TableCell>{customer.email}</TableCell>
+                <TableCell>{customer.phone}</TableCell>
+                <TableCell>{customer.city}</TableCell>
+                <TableCell>{formatCurrency(customer.walletBalance)}</TableCell>
+                <TableCell>{customer.totalRides}</TableCell>
+                <TableCell>{customer.rating.toFixed(1)}</TableCell>
+                <TableCell>{renderStatusBadge(customer.status)}</TableCell>
+                <TableCell>{formatDate(customer.joinedAt)}</TableCell>
+                <TableCell>
                   <div className="flex flex-wrap gap-2">
                     <Dialog>
                       <DialogTrigger asChild>
@@ -338,11 +340,11 @@ function CustomersPage() {
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
 
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted-foreground">
@@ -367,21 +369,45 @@ function CustomersPage() {
           </DialogHeader>
           <div className="grid gap-3">
             <div className="grid gap-3 md:grid-cols-2">
-              <Input value={form.name || ""} placeholder="Name" onChange={(e) => updateForm("name", e.target.value)} />
-              <Input value={form.email || ""} placeholder="Email" onChange={(e) => updateForm("email", e.target.value)} />
-              <Input value={form.phone || ""} placeholder="Phone" onChange={(e) => updateForm("phone", e.target.value)} />
-              <Input value={form.city || ""} placeholder="City" onChange={(e) => updateForm("city", e.target.value)} />
-              <Input value={form.walletBalance ?? ""} placeholder="Wallet Balance" type="number" onChange={(e) => updateForm("walletBalance", Number(e.target.value))} />
-              <Input value={form.totalRides ?? ""} placeholder="Total Rides" type="number" onChange={(e) => updateForm("totalRides", Number(e.target.value))} />
-              <Input value={form.rating ?? ""} placeholder="Rating" type="number" onChange={(e) => updateForm("rating", Number(e.target.value))} />
-              <Select value={form.status || "active"} onValueChange={(value) => updateForm("status", value as CustomerStatus)}>
-                <SelectTrigger className="w-full"><SelectValue placeholder="Status" /></SelectTrigger>
-                <SelectContent>
-                  {statusOptions.filter((item) => item.value !== "all").map((option) => (
-                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-name">Name</Label>
+                <Input id="form-name" value={form.name || ""} placeholder="Name" onChange={(e) => updateForm("name", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-email">Email</Label>
+                <Input id="form-email" value={form.email || ""} placeholder="Email" onChange={(e) => updateForm("email", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-phone">Phone</Label>
+                <Input id="form-phone" value={form.phone || ""} placeholder="Phone" onChange={(e) => updateForm("phone", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-city">City</Label>
+                <Input id="form-city" value={form.city || ""} placeholder="City" onChange={(e) => updateForm("city", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-wallet">Wallet Balance</Label>
+                <Input id="form-wallet" value={form.walletBalance ?? ""} placeholder="Wallet Balance" type="number" onChange={(e) => updateForm("walletBalance", Number(e.target.value))} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-rides">Total Rides</Label>
+                <Input id="form-rides" value={form.totalRides ?? ""} placeholder="Total Rides" type="number" onChange={(e) => updateForm("totalRides", Number(e.target.value))} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-rating">Rating</Label>
+                <Input id="form-rating" value={form.rating ?? ""} placeholder="Rating" type="number" onChange={(e) => updateForm("rating", Number(e.target.value))} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-status">Status</Label>
+                <Select value={form.status || "active"} onValueChange={(value) => updateForm("status", value as CustomerStatus)}>
+                  <SelectTrigger id="form-status" className="w-full"><SelectValue placeholder="Status" /></SelectTrigger>
+                  <SelectContent>
+                    {statusOptions.filter((item) => item.value !== "all").map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
             <Input value={form.avatar || ""} placeholder="Avatar URL" onChange={(e) => updateForm("avatar", e.target.value)} />
             <Input value={form.notes || ""} placeholder="Notes" onChange={(e) => updateForm("notes", e.target.value)} />
@@ -401,21 +427,45 @@ function CustomersPage() {
           </DialogHeader>
           <div className="grid gap-3">
             <div className="grid gap-3 md:grid-cols-2">
-              <Input value={form.name || ""} placeholder="Name" onChange={(e) => updateForm("name", e.target.value)} />
-              <Input value={form.email || ""} placeholder="Email" onChange={(e) => updateForm("email", e.target.value)} />
-              <Input value={form.phone || ""} placeholder="Phone" onChange={(e) => updateForm("phone", e.target.value)} />
-              <Input value={form.city || ""} placeholder="City" onChange={(e) => updateForm("city", e.target.value)} />
-              <Input value={form.walletBalance ?? ""} placeholder="Wallet Balance" type="number" onChange={(e) => updateForm("walletBalance", Number(e.target.value))} />
-              <Input value={form.totalRides ?? ""} placeholder="Total Rides" type="number" onChange={(e) => updateForm("totalRides", Number(e.target.value))} />
-              <Input value={form.rating ?? ""} placeholder="Rating" type="number" onChange={(e) => updateForm("rating", Number(e.target.value))} />
-              <Select value={form.status || "active"} onValueChange={(value) => updateForm("status", value as CustomerStatus)}>
-                <SelectTrigger className="w-full"><SelectValue placeholder="Status" /></SelectTrigger>
-                <SelectContent>
-                  {statusOptions.filter((item) => item.value !== "all").map((option) => (
-                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-name">Name</Label>
+                <Input id="form-name" value={form.name || ""} placeholder="Name" onChange={(e) => updateForm("name", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-email">Email</Label>
+                <Input id="form-email" value={form.email || ""} placeholder="Email" onChange={(e) => updateForm("email", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-phone">Phone</Label>
+                <Input id="form-phone" value={form.phone || ""} placeholder="Phone" onChange={(e) => updateForm("phone", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-city">City</Label>
+                <Input id="form-city" value={form.city || ""} placeholder="City" onChange={(e) => updateForm("city", e.target.value)} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-wallet">Wallet Balance</Label>
+                <Input id="form-wallet" value={form.walletBalance ?? ""} placeholder="Wallet Balance" type="number" onChange={(e) => updateForm("walletBalance", Number(e.target.value))} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-rides">Total Rides</Label>
+                <Input id="form-rides" value={form.totalRides ?? ""} placeholder="Total Rides" type="number" onChange={(e) => updateForm("totalRides", Number(e.target.value))} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-rating">Rating</Label>
+                <Input id="form-rating" value={form.rating ?? ""} placeholder="Rating" type="number" onChange={(e) => updateForm("rating", Number(e.target.value))} />
+              </div>
+              <div className="grid gap-1.5">
+                <Label htmlFor="form-status">Status</Label>
+                <Select value={form.status || "active"} onValueChange={(value) => updateForm("status", value as CustomerStatus)}>
+                  <SelectTrigger id="form-status" className="w-full"><SelectValue placeholder="Status" /></SelectTrigger>
+                  <SelectContent>
+                    {statusOptions.filter((item) => item.value !== "all").map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
             <Input value={form.avatar || ""} placeholder="Avatar URL" onChange={(e) => updateForm("avatar", e.target.value)} />
             <Input value={form.notes || ""} placeholder="Notes" onChange={(e) => updateForm("notes", e.target.value)} />
