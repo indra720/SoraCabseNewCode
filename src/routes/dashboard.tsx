@@ -363,8 +363,66 @@
                     </div>
                     <span className="font-medium text-foreground">{u.value}%</span>
                   </div>
-                ))}
-              </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="vehicle">Vehicle Type</Label>
+                    <Select required>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select vehicle type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="bike">Bike</SelectItem>
+                        <SelectItem value="car">Car</SelectItem>
+                        <SelectItem value="van">Van</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="notes">Notes</Label>
+                    <Textarea id="notes" placeholder="Any special instructions..." />
+                  </div>
+                  <DialogFooter className="mt-6">
+                    <DialogClose asChild>
+                      <Button variant="outline">Cancel</Button>
+                    </DialogClose>
+                    <Button type="submit">Create Booking</Button>
+                  </DialogFooter>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </>
+        }
+      />
+      
+      {/*  KPI grid */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-7">
+        <StatCard
+          label="Revenue"
+          value="$1.28M"
+          delta={12.4}
+          hint="vs last month"
+          icon={DollarSign}
+          accent="primary"
+        />
+        <StatCard label="Active Drivers" value="2,847" delta={4.2} icon={IdCard} accent="info" />
+        <StatCard label="Customers" value="48,210" delta={8.1} icon={Users} accent="success" />
+        <StatCard label="Fleet" value="912" delta={2.7} icon={Car} accent="warning" />
+        <StatCard
+          label="Orders"
+          value="12,340"
+          delta={-1.2}
+          icon={ShoppingBag}
+          accent="destructive"
+        />
+        <StatCard label="Bike Rentals" value="1,584" delta={15.6} icon={Bike} accent="primary" />
+        <StatCard label="Trips" value="9,412" delta={6.9} icon={RouteIcon} accent="info" />
+      </div>
+      {/* Charts row 1 */}
+      <div className="grid gap-4 lg:grid-cols-3">
+        <div className="surface-card rounded-2xl p-4 lg:col-span-2">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-foreground">Revenue vs Expenses</h3>
+              <p className="text-sm text-slate-500">Last 9 months</p>
             </div>
           </div>
           {/* Charts row 2 */}
