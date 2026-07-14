@@ -377,8 +377,112 @@ function getDisplayFields(sectionId: string | undefined, childKey: string, field
   if (section === "integrations") return getDisplayFieldsForIntegrations(childKey, fields);
   if (section === "subscription") return getDisplayFieldsForSubscription(childKey, fields);
   if (section === "reports") return getDisplayFieldsForReports(childKey, fields);
+  if (section === "restaurant") return getDisplayFieldsForRestaurant(childKey, fields);
+  if (section === "menu") return getDisplayFieldsForMenu(childKey, fields);
+  if (section === "kitchen") return getDisplayFieldsForKitchen(childKey, fields);
+  if (section === "orders") return getDisplayFieldsForOrders(childKey, fields);
+  if (section === "tables") return getDisplayFieldsForTables(childKey, fields);
   if (section === "settings") return getDisplayFieldsForSettings(childKey, fields);
   return fields.slice(0, 5);
+}
+
+function getDisplayFieldsForRestaurant(childKey: string, fields: FormField[]) {
+  const key = (childKey || "all-restaurants").toLowerCase();
+  const byName = (name: string) =>
+    fields.find((f) => f.name === name) ?? ({ name, label: name, type: "text" } as FormField);
+
+  switch (key) {
+    case "all-restaurants":
+      return [byName("id"), byName("name"), byName("owner"), byName("status"), byName("city")];
+    case "pending-approvals":
+      return [byName("id"), byName("name"), byName("submitted_by"), byName("submitted_on"), byName("status")];
+    case "owners":
+      return [byName("owner_id"), byName("name"), byName("email"), byName("phone"), byName("restaurants")];
+    case "branches":
+      return [byName("branch_id"), byName("restaurant"), byName("address"), byName("city"), byName("status")];
+    case "categories":
+      return [byName("category_id"), byName("name"), byName("parent"), byName("status"), byName("items_count")];
+    default:
+      return fields.slice(0, 5);
+  }
+}
+
+function getDisplayFieldsForMenu(childKey: string, fields: FormField[]) {
+  const key = (childKey || "categories").toLowerCase();
+  const byName = (name: string) =>
+    fields.find((f) => f.name === name) ?? ({ name, label: name, type: "text" } as FormField);
+
+  switch (key) {
+    case "categories":
+      return [byName("id"), byName("name"), byName("parent"), byName("status"), byName("items")];
+    case "items":
+      return [byName("item_id"), byName("name"), byName("price"), byName("category"), byName("available")];
+    case "addons":
+      return [byName("addon_id"), byName("name"), byName("price"), byName("applies_to"), byName("status")];
+    case "combos":
+      return [byName("combo_id"), byName("name"), byName("price"), byName("items"), byName("status")];
+    case "approval":
+      return [byName("request_id"), byName("item_name"), byName("restaurant"), byName("submitted_on"), byName("status")];
+    default:
+      return fields.slice(0, 5);
+  }
+}
+
+function getDisplayFieldsForKitchen(childKey: string, fields: FormField[]) {
+  const key = (childKey || "kds").toLowerCase();
+  const byName = (name: string) =>
+    fields.find((f) => f.name === name) ?? ({ name, label: name, type: "text" } as FormField);
+
+  switch (key) {
+    case "kds":
+      return [byName("kds_id"), byName("restaurant"), byName("stations"), byName("status"), byName("last_sync")];
+    case "live-orders":
+      return [byName("order_id"), byName("table"), byName("items"), byName("status"), byName("eta")];
+    case "assignments":
+      return [byName("assignment_id"), byName("chef"), byName("order_id"), byName("status"), byName("started_at")];
+    default:
+      return fields.slice(0, 5);
+  }
+}
+
+function getDisplayFieldsForOrders(childKey: string, fields: FormField[]) {
+  const key = (childKey || "all").toLowerCase();
+  const byName = (name: string) =>
+    fields.find((f) => f.name === name) ?? ({ name, label: name, type: "text" } as FormField);
+
+  switch (key) {
+    case "all":
+      return [byName("order_id"), byName("restaurant"), byName("total"), byName("status"), byName("placed_at")];
+    case "dine-in":
+      return [byName("order_id"), byName("table"), byName("server"), byName("status"), byName("placed_at")];
+    case "delivery":
+      return [byName("order_id"), byName("customer"), byName("address"), byName("status"), byName("eta")];
+    case "takeaway":
+      return [byName("order_id"), byName("customer"), byName("pickup_time"), byName("status"), byName("placed_at")];
+    case "scheduled":
+      return [byName("order_id"), byName("customer"), byName("scheduled_for"), byName("status"), byName("placed_at")];
+    case "refunds":
+      return [byName("refund_id"), byName("order_id"), byName("amount"), byName("reason"), byName("status")];
+    default:
+      return fields.slice(0, 5);
+  }
+}
+
+function getDisplayFieldsForTables(childKey: string, fields: FormField[]) {
+  const key = (childKey || "list").toLowerCase();
+  const byName = (name: string) =>
+    fields.find((f) => f.name === name) ?? ({ name, label: name, type: "text" } as FormField);
+
+  switch (key) {
+    case "list":
+      return [byName("table_id"), byName("number"), byName("seats"), byName("location"), byName("status")];
+    case "reservations":
+      return [byName("reservation_id"), byName("customer"), byName("table"), byName("time"), byName("status")];
+    case "qr":
+      return [byName("qr_id"), byName("table"), byName("qr_image"), byName("status"), byName("last_scanned")];
+    default:
+      return fields.slice(0, 5);
+  }
 }
 
 function getDisplayFieldsForAI(childKey: string, fields: FormField[]) {

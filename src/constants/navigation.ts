@@ -42,6 +42,64 @@ const m = (slug: string, sub?: string) => (sub ? `/m/${slug}/${sub}` : `/m/${slu
 
 export const NAV_SECTIONS: NavSection[] = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
+  // Restaurant & related modules
+  {
+    id: "restaurant",
+    label: "Restaurant Management",
+    icon: Store,
+    children: [
+      { label: "All Restaurants", path: m("restaurant", "all-restaurants") },
+      { label: "Pending Approvals", path: m("restaurant", "pending-approvals") },
+      { label: "Restaurant Owners", path: m("restaurant", "owners") },
+      { label: "Branches", path: m("restaurant", "branches") },
+      { label: "Restaurant Categories", path: m("restaurant", "categories") },
+    ],
+  },
+  {
+    id: "menu",
+    label: "Menu Management",
+    icon: FileText,
+    children: [
+      { label: "Categories", path: m("menu", "categories") },
+      { label: "Menu Items", path: m("menu", "items") },
+      { label: "Add-ons", path: m("menu", "addons") },
+      { label: "Combo Meals", path: m("menu", "combos") },
+      { label: "Menu Approval", path: m("menu", "approval") },
+    ],
+  },
+  {
+    id: "kitchen",
+    label: "Kitchen Management",
+    icon: Monitor,
+    children: [
+      { label: "Kitchen Display (KDS)", path: m("kitchen", "kds") },
+      { label: "Live Orders", path: m("kitchen", "live-orders") },
+      { label: "Chef Assignment", path: m("kitchen", "assignments") },
+    ],
+  },
+  {
+    id: "orders",
+    label: "Order Management",
+    icon: ClipboardList,
+    children: [
+      { label: "All Orders", path: m("orders", "all") },
+      { label: "Dine-In Orders", path: m("orders", "dine-in") },
+      { label: "Delivery Orders", path: m("orders", "delivery") },
+      { label: "Takeaway Orders", path: m("orders", "takeaway") },
+      { label: "Scheduled Orders", path: m("orders", "scheduled") },
+      { label: "Refunds", path: m("orders", "refunds") },
+    ],
+  },
+  {
+    id: "tables",
+    label: "Table & Reservation",
+    icon: CalendarRange,
+    children: [
+      { label: "Tables", path: m("tables", "list") },
+      { label: "Reservations", path: m("tables", "reservations") },
+      { label: "QR Table Ordering", path: m("tables", "qr") },
+    ],
+  },
   {
     id: "iam", label: "Identity & Access", icon: Shield,
     children: [

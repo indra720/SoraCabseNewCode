@@ -1,5 +1,5 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import { ChevronRight, Zap } from "lucide-react";
+import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
+import { ChevronRight, Zap, Settings as SettingsIcon, LogOut } from "lucide-react";
 import soraLogo from "@/Assets/Sora.png";
 
 import {
@@ -21,15 +21,28 @@ import {
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 import { useAuth } from "@/contexts/AuthContext";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { getNavForRole, type NavSection } from "@/constants/navigation";
 import { ROLE_LABELS } from "@/constants/roles";
 import { cn } from "@/lib/utils";
 
 export function AppSidebar() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const { state } = useSidebar();
 
   const collapsed = state === "collapsed";
+
+  const initials =
+    user?.name?.split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase() ?? "U";
 
   const pathname = useRouterState({
     select: (r) => r.location.pathname,
@@ -73,7 +86,6 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {" "}
               {sections.map((section) => {
                 const Icon = section.icon;
 
@@ -176,7 +188,7 @@ export function AppSidebar() {
                     </SidebarMenuItem>
                   </Collapsible>
                 );
-              })}{" "}
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -186,136 +198,58 @@ export function AppSidebar() {
 
       <SidebarFooter className="border-t border-gray-200 bg-white p-1">
         {!collapsed ? (
-          <div
-            className="
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              p-4
-              "
-          >
-            <div className="flex items-center gap-3">
-              <div
-                className="
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-orange-500
-                  text-sm
-                  font-bold
-                  text-white
-                  shadow-sm
-                  "
-              >
-                {user?.name?.charAt(0).toUpperCase() || "A"}
-              </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-10 w-10">
+                    <AvatarFallback className="bg-orange-500 text-sm font-bold text-white">{initials}</AvatarFallback>
+                  </Avatar>
 
-              <div className="min-w-0 flex-1">
-                <h4
-                  className="
-                    truncate
-                    text-sm
-                    font-semibold
-                    text-gray-800
-                    "
-                >
-                  {user?.name}
-                </h4>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="truncate text-sm font-semibold text-gray-800">{user?.name}</h4>
 
-                <p
-                  className="
-                    truncate
-                    text-xs
-                    text-gray-600
-                    "
-                >
-                  {user?.email}
-                </p>
-              </div>
-            </div>
-
-            {/* <div className="mt-4 border-t border-zinc-800 pt-3">
-
-                <div className="flex items-center justify-between">
-
-                  <div>
-
-                    <p className="text-xs text-zinc-500">
-                      Organization
-                    </p>
-
-                    <p className="text-sm font-medium text-white">
-                      {user?.organization}
-                    </p>
-
+                    <p className="truncate text-xs text-gray-600">{user?.email}</p>
                   </div>
-
-                  <div
-                    className="
-                    rounded-full
-                    bg-green-500/20
-                    px-3
-                    py-1
-                    text-[11px]
-                    font-semibold
-                    text-green-400
-                    "
-                  >
-                    Online
-                  </div>
-
                 </div>
-
               </div>
+            </DropdownMenuTrigger>
 
-              <div className="mt-5 border-t border-zinc-800 pt-3">
-
-                <p
-                  className="
-                  text-center
-                  text-[11px]
-                  tracking-wide
-                  text-zinc-500
-                  "
-                >
-                  Sora Cabs
-                </p>
-
-                <p
-                  className="
-                  mt-1
-                  text-center
-                  text-[10px]
-                  text-zinc-600
-                  "
-                >
-                  Enterprise Dashboard v2.0
-                </p>
-
-              </div> */}
-          </div>
+            <DropdownMenuContent align="end" className="w-52">
+              <DropdownMenuLabel>My account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link to="/settings">
+                  <SettingsIcon className="mr-2 h-4 w-4" /> Settings
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => { logout(); navigate({ to: "/auth" }); }}>
+                <LogOut className="mr-2 h-4 w-4" /> Sign out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         ) : (
           <div className="flex justify-center">
-            <div
-              className="
-                flex
-                h-9
-                w-9
-                items-center
-                justify-center
-                rounded-full
-                bg-orange-500
-                font-bold
-                text-white
-                shadow-sm
-                "
-            >
-              {user?.name?.charAt(0).toUpperCase() || "A"}
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-500 font-bold text-white shadow-sm">{initials}</div>
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent align="end" className="w-52">
+                <DropdownMenuLabel>My account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/settings">
+                    <SettingsIcon className="mr-2 h-4 w-4" /> Settings
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => { logout(); navigate({ to: "/auth" }); }}>
+                  <LogOut className="mr-2 h-4 w-4" /> Sign out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         )}
       </SidebarFooter>
