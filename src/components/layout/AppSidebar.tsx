@@ -69,7 +69,7 @@ export function AppSidebar() {
 
       {/* ================= MENU ================= */}
 
-      <SidebarContent className="px-1 py-2 bg-white">
+      <SidebarContent className="px-0.5 py-2 bg-white">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -97,7 +97,7 @@ export function AppSidebar() {
                         )}
                       >
                         <Link to={section.path!} className="flex items-center gap-3">
-                          <Icon className="h-5 w-5 shrink-0" />
+                          <Icon className="h-4 w-4 shrink-0" />
 
                           {!collapsed && <span className="truncate text-sm">{section.label}</span>}
                         </Link>
