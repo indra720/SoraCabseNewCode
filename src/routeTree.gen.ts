@@ -14,6 +14,34 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MSplatRouteImport } from './routes/m/$'
+import { Route as MTablesTablesRouteImport } from './routes/m/tables/tables'
+import { Route as MTablesReservationsRouteImport } from './routes/m/tables/reservations'
+import { Route as MTablesQrOrderingRouteImport } from './routes/m/tables/qr-ordering'
+import { Route as MRestaurantPendingApprovalsRouteImport } from './routes/m/restaurant/pending-approvals'
+import { Route as MRestaurantOwnersRouteImport } from './routes/m/restaurant/owners'
+import { Route as MRestaurantDashboardRouteImport } from './routes/m/restaurant/dashboard'
+import { Route as MRestaurantCategoriesRouteImport } from './routes/m/restaurant/categories'
+import { Route as MRestaurantBranchesRouteImport } from './routes/m/restaurant/branches'
+import { Route as MRestaurantAllRestaurantsRouteImport } from './routes/m/restaurant/all-restaurants'
+import { Route as MOrdersTakeawayRouteImport } from './routes/m/orders/takeaway'
+import { Route as MOrdersScheduledRouteImport } from './routes/m/orders/scheduled'
+import { Route as MOrdersRefundsRouteImport } from './routes/m/orders/refunds'
+import { Route as MOrdersDineinRouteImport } from './routes/m/orders/dinein'
+import { Route as MOrdersDeliveryRouteImport } from './routes/m/orders/delivery'
+import { Route as MOrdersAllOrdersRouteImport } from './routes/m/orders/all-orders'
+import { Route as MMenuItemsRouteImport } from './routes/m/menu/items'
+import { Route as MMenuCombosRouteImport } from './routes/m/menu/combos'
+import { Route as MMenuCategoriesRouteImport } from './routes/m/menu/categories'
+import { Route as MMenuApprovalRouteImport } from './routes/m/menu/approval'
+import { Route as MMenuAddonsRouteImport } from './routes/m/menu/addons'
+import { Route as MKitchenLiveOrdersRouteImport } from './routes/m/kitchen/live-orders'
+import { Route as MKitchenKdsRouteImport } from './routes/m/kitchen/kds'
+import { Route as MKitchenChefAssignmentRouteImport } from './routes/m/kitchen/chef-assignment'
+import { Route as MCustomersWalletRouteImport } from './routes/m/customers/wallet'
+import { Route as MCustomersSupportRouteImport } from './routes/m/customers/support'
+import { Route as MCustomersRidesRouteImport } from './routes/m/customers/rides'
+import { Route as MCustomersRatingsRouteImport } from './routes/m/customers/ratings'
+import { Route as MCustomersListRouteImport } from './routes/m/customers/list'
 
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
@@ -40,6 +68,148 @@ const MSplatRoute = MSplatRouteImport.update({
   path: '/m/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MTablesTablesRoute = MTablesTablesRouteImport.update({
+  id: '/m/tables/tables',
+  path: '/m/tables/tables',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MTablesReservationsRoute = MTablesReservationsRouteImport.update({
+  id: '/m/tables/reservations',
+  path: '/m/tables/reservations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MTablesQrOrderingRoute = MTablesQrOrderingRouteImport.update({
+  id: '/m/tables/qr-ordering',
+  path: '/m/tables/qr-ordering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MRestaurantPendingApprovalsRoute =
+  MRestaurantPendingApprovalsRouteImport.update({
+    id: '/m/restaurant/pending-approvals',
+    path: '/m/restaurant/pending-approvals',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MRestaurantOwnersRoute = MRestaurantOwnersRouteImport.update({
+  id: '/m/restaurant/owners',
+  path: '/m/restaurant/owners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MRestaurantDashboardRoute = MRestaurantDashboardRouteImport.update({
+  id: '/m/restaurant/dashboard',
+  path: '/m/restaurant/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MRestaurantCategoriesRoute = MRestaurantCategoriesRouteImport.update({
+  id: '/m/restaurant/categories',
+  path: '/m/restaurant/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MRestaurantBranchesRoute = MRestaurantBranchesRouteImport.update({
+  id: '/m/restaurant/branches',
+  path: '/m/restaurant/branches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MRestaurantAllRestaurantsRoute =
+  MRestaurantAllRestaurantsRouteImport.update({
+    id: '/m/restaurant/all-restaurants',
+    path: '/m/restaurant/all-restaurants',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MOrdersTakeawayRoute = MOrdersTakeawayRouteImport.update({
+  id: '/m/orders/takeaway',
+  path: '/m/orders/takeaway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MOrdersScheduledRoute = MOrdersScheduledRouteImport.update({
+  id: '/m/orders/scheduled',
+  path: '/m/orders/scheduled',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MOrdersRefundsRoute = MOrdersRefundsRouteImport.update({
+  id: '/m/orders/refunds',
+  path: '/m/orders/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MOrdersDineinRoute = MOrdersDineinRouteImport.update({
+  id: '/m/orders/dinein',
+  path: '/m/orders/dinein',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MOrdersDeliveryRoute = MOrdersDeliveryRouteImport.update({
+  id: '/m/orders/delivery',
+  path: '/m/orders/delivery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MOrdersAllOrdersRoute = MOrdersAllOrdersRouteImport.update({
+  id: '/m/orders/all-orders',
+  path: '/m/orders/all-orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MMenuItemsRoute = MMenuItemsRouteImport.update({
+  id: '/m/menu/items',
+  path: '/m/menu/items',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MMenuCombosRoute = MMenuCombosRouteImport.update({
+  id: '/m/menu/combos',
+  path: '/m/menu/combos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MMenuCategoriesRoute = MMenuCategoriesRouteImport.update({
+  id: '/m/menu/categories',
+  path: '/m/menu/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MMenuApprovalRoute = MMenuApprovalRouteImport.update({
+  id: '/m/menu/approval',
+  path: '/m/menu/approval',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MMenuAddonsRoute = MMenuAddonsRouteImport.update({
+  id: '/m/menu/addons',
+  path: '/m/menu/addons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MKitchenLiveOrdersRoute = MKitchenLiveOrdersRouteImport.update({
+  id: '/m/kitchen/live-orders',
+  path: '/m/kitchen/live-orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MKitchenKdsRoute = MKitchenKdsRouteImport.update({
+  id: '/m/kitchen/kds',
+  path: '/m/kitchen/kds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MKitchenChefAssignmentRoute = MKitchenChefAssignmentRouteImport.update({
+  id: '/m/kitchen/chef-assignment',
+  path: '/m/kitchen/chef-assignment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MCustomersWalletRoute = MCustomersWalletRouteImport.update({
+  id: '/m/customers/wallet',
+  path: '/m/customers/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MCustomersSupportRoute = MCustomersSupportRouteImport.update({
+  id: '/m/customers/support',
+  path: '/m/customers/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MCustomersRidesRoute = MCustomersRidesRouteImport.update({
+  id: '/m/customers/rides',
+  path: '/m/customers/rides',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MCustomersRatingsRoute = MCustomersRatingsRouteImport.update({
+  id: '/m/customers/ratings',
+  path: '/m/customers/ratings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MCustomersListRoute = MCustomersListRouteImport.update({
+  id: '/m/customers/list',
+  path: '/m/customers/list',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +217,34 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/settings': typeof SettingsRoute
   '/m/$': typeof MSplatRoute
+  '/m/customers/list': typeof MCustomersListRoute
+  '/m/customers/ratings': typeof MCustomersRatingsRoute
+  '/m/customers/rides': typeof MCustomersRidesRoute
+  '/m/customers/support': typeof MCustomersSupportRoute
+  '/m/customers/wallet': typeof MCustomersWalletRoute
+  '/m/kitchen/chef-assignment': typeof MKitchenChefAssignmentRoute
+  '/m/kitchen/kds': typeof MKitchenKdsRoute
+  '/m/kitchen/live-orders': typeof MKitchenLiveOrdersRoute
+  '/m/menu/addons': typeof MMenuAddonsRoute
+  '/m/menu/approval': typeof MMenuApprovalRoute
+  '/m/menu/categories': typeof MMenuCategoriesRoute
+  '/m/menu/combos': typeof MMenuCombosRoute
+  '/m/menu/items': typeof MMenuItemsRoute
+  '/m/orders/all-orders': typeof MOrdersAllOrdersRoute
+  '/m/orders/delivery': typeof MOrdersDeliveryRoute
+  '/m/orders/dinein': typeof MOrdersDineinRoute
+  '/m/orders/refunds': typeof MOrdersRefundsRoute
+  '/m/orders/scheduled': typeof MOrdersScheduledRoute
+  '/m/orders/takeaway': typeof MOrdersTakeawayRoute
+  '/m/restaurant/all-restaurants': typeof MRestaurantAllRestaurantsRoute
+  '/m/restaurant/branches': typeof MRestaurantBranchesRoute
+  '/m/restaurant/categories': typeof MRestaurantCategoriesRoute
+  '/m/restaurant/dashboard': typeof MRestaurantDashboardRoute
+  '/m/restaurant/owners': typeof MRestaurantOwnersRoute
+  '/m/restaurant/pending-approvals': typeof MRestaurantPendingApprovalsRoute
+  '/m/tables/qr-ordering': typeof MTablesQrOrderingRoute
+  '/m/tables/reservations': typeof MTablesReservationsRoute
+  '/m/tables/tables': typeof MTablesTablesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +252,34 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/settings': typeof SettingsRoute
   '/m/$': typeof MSplatRoute
+  '/m/customers/list': typeof MCustomersListRoute
+  '/m/customers/ratings': typeof MCustomersRatingsRoute
+  '/m/customers/rides': typeof MCustomersRidesRoute
+  '/m/customers/support': typeof MCustomersSupportRoute
+  '/m/customers/wallet': typeof MCustomersWalletRoute
+  '/m/kitchen/chef-assignment': typeof MKitchenChefAssignmentRoute
+  '/m/kitchen/kds': typeof MKitchenKdsRoute
+  '/m/kitchen/live-orders': typeof MKitchenLiveOrdersRoute
+  '/m/menu/addons': typeof MMenuAddonsRoute
+  '/m/menu/approval': typeof MMenuApprovalRoute
+  '/m/menu/categories': typeof MMenuCategoriesRoute
+  '/m/menu/combos': typeof MMenuCombosRoute
+  '/m/menu/items': typeof MMenuItemsRoute
+  '/m/orders/all-orders': typeof MOrdersAllOrdersRoute
+  '/m/orders/delivery': typeof MOrdersDeliveryRoute
+  '/m/orders/dinein': typeof MOrdersDineinRoute
+  '/m/orders/refunds': typeof MOrdersRefundsRoute
+  '/m/orders/scheduled': typeof MOrdersScheduledRoute
+  '/m/orders/takeaway': typeof MOrdersTakeawayRoute
+  '/m/restaurant/all-restaurants': typeof MRestaurantAllRestaurantsRoute
+  '/m/restaurant/branches': typeof MRestaurantBranchesRoute
+  '/m/restaurant/categories': typeof MRestaurantCategoriesRoute
+  '/m/restaurant/dashboard': typeof MRestaurantDashboardRoute
+  '/m/restaurant/owners': typeof MRestaurantOwnersRoute
+  '/m/restaurant/pending-approvals': typeof MRestaurantPendingApprovalsRoute
+  '/m/tables/qr-ordering': typeof MTablesQrOrderingRoute
+  '/m/tables/reservations': typeof MTablesReservationsRoute
+  '/m/tables/tables': typeof MTablesTablesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +288,141 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/settings': typeof SettingsRoute
   '/m/$': typeof MSplatRoute
+  '/m/customers/list': typeof MCustomersListRoute
+  '/m/customers/ratings': typeof MCustomersRatingsRoute
+  '/m/customers/rides': typeof MCustomersRidesRoute
+  '/m/customers/support': typeof MCustomersSupportRoute
+  '/m/customers/wallet': typeof MCustomersWalletRoute
+  '/m/kitchen/chef-assignment': typeof MKitchenChefAssignmentRoute
+  '/m/kitchen/kds': typeof MKitchenKdsRoute
+  '/m/kitchen/live-orders': typeof MKitchenLiveOrdersRoute
+  '/m/menu/addons': typeof MMenuAddonsRoute
+  '/m/menu/approval': typeof MMenuApprovalRoute
+  '/m/menu/categories': typeof MMenuCategoriesRoute
+  '/m/menu/combos': typeof MMenuCombosRoute
+  '/m/menu/items': typeof MMenuItemsRoute
+  '/m/orders/all-orders': typeof MOrdersAllOrdersRoute
+  '/m/orders/delivery': typeof MOrdersDeliveryRoute
+  '/m/orders/dinein': typeof MOrdersDineinRoute
+  '/m/orders/refunds': typeof MOrdersRefundsRoute
+  '/m/orders/scheduled': typeof MOrdersScheduledRoute
+  '/m/orders/takeaway': typeof MOrdersTakeawayRoute
+  '/m/restaurant/all-restaurants': typeof MRestaurantAllRestaurantsRoute
+  '/m/restaurant/branches': typeof MRestaurantBranchesRoute
+  '/m/restaurant/categories': typeof MRestaurantCategoriesRoute
+  '/m/restaurant/dashboard': typeof MRestaurantDashboardRoute
+  '/m/restaurant/owners': typeof MRestaurantOwnersRoute
+  '/m/restaurant/pending-approvals': typeof MRestaurantPendingApprovalsRoute
+  '/m/tables/qr-ordering': typeof MTablesQrOrderingRoute
+  '/m/tables/reservations': typeof MTablesReservationsRoute
+  '/m/tables/tables': typeof MTablesTablesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard' | '/settings' | '/m/$'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/settings'
+    | '/m/$'
+    | '/m/customers/list'
+    | '/m/customers/ratings'
+    | '/m/customers/rides'
+    | '/m/customers/support'
+    | '/m/customers/wallet'
+    | '/m/kitchen/chef-assignment'
+    | '/m/kitchen/kds'
+    | '/m/kitchen/live-orders'
+    | '/m/menu/addons'
+    | '/m/menu/approval'
+    | '/m/menu/categories'
+    | '/m/menu/combos'
+    | '/m/menu/items'
+    | '/m/orders/all-orders'
+    | '/m/orders/delivery'
+    | '/m/orders/dinein'
+    | '/m/orders/refunds'
+    | '/m/orders/scheduled'
+    | '/m/orders/takeaway'
+    | '/m/restaurant/all-restaurants'
+    | '/m/restaurant/branches'
+    | '/m/restaurant/categories'
+    | '/m/restaurant/dashboard'
+    | '/m/restaurant/owners'
+    | '/m/restaurant/pending-approvals'
+    | '/m/tables/qr-ordering'
+    | '/m/tables/reservations'
+    | '/m/tables/tables'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/settings' | '/m/$'
-  id: '__root__' | '/' | '/auth' | '/dashboard' | '/settings' | '/m/$'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/settings'
+    | '/m/$'
+    | '/m/customers/list'
+    | '/m/customers/ratings'
+    | '/m/customers/rides'
+    | '/m/customers/support'
+    | '/m/customers/wallet'
+    | '/m/kitchen/chef-assignment'
+    | '/m/kitchen/kds'
+    | '/m/kitchen/live-orders'
+    | '/m/menu/addons'
+    | '/m/menu/approval'
+    | '/m/menu/categories'
+    | '/m/menu/combos'
+    | '/m/menu/items'
+    | '/m/orders/all-orders'
+    | '/m/orders/delivery'
+    | '/m/orders/dinein'
+    | '/m/orders/refunds'
+    | '/m/orders/scheduled'
+    | '/m/orders/takeaway'
+    | '/m/restaurant/all-restaurants'
+    | '/m/restaurant/branches'
+    | '/m/restaurant/categories'
+    | '/m/restaurant/dashboard'
+    | '/m/restaurant/owners'
+    | '/m/restaurant/pending-approvals'
+    | '/m/tables/qr-ordering'
+    | '/m/tables/reservations'
+    | '/m/tables/tables'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/settings'
+    | '/m/$'
+    | '/m/customers/list'
+    | '/m/customers/ratings'
+    | '/m/customers/rides'
+    | '/m/customers/support'
+    | '/m/customers/wallet'
+    | '/m/kitchen/chef-assignment'
+    | '/m/kitchen/kds'
+    | '/m/kitchen/live-orders'
+    | '/m/menu/addons'
+    | '/m/menu/approval'
+    | '/m/menu/categories'
+    | '/m/menu/combos'
+    | '/m/menu/items'
+    | '/m/orders/all-orders'
+    | '/m/orders/delivery'
+    | '/m/orders/dinein'
+    | '/m/orders/refunds'
+    | '/m/orders/scheduled'
+    | '/m/orders/takeaway'
+    | '/m/restaurant/all-restaurants'
+    | '/m/restaurant/branches'
+    | '/m/restaurant/categories'
+    | '/m/restaurant/dashboard'
+    | '/m/restaurant/owners'
+    | '/m/restaurant/pending-approvals'
+    | '/m/tables/qr-ordering'
+    | '/m/tables/reservations'
+    | '/m/tables/tables'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +431,34 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   SettingsRoute: typeof SettingsRoute
   MSplatRoute: typeof MSplatRoute
+  MCustomersListRoute: typeof MCustomersListRoute
+  MCustomersRatingsRoute: typeof MCustomersRatingsRoute
+  MCustomersRidesRoute: typeof MCustomersRidesRoute
+  MCustomersSupportRoute: typeof MCustomersSupportRoute
+  MCustomersWalletRoute: typeof MCustomersWalletRoute
+  MKitchenChefAssignmentRoute: typeof MKitchenChefAssignmentRoute
+  MKitchenKdsRoute: typeof MKitchenKdsRoute
+  MKitchenLiveOrdersRoute: typeof MKitchenLiveOrdersRoute
+  MMenuAddonsRoute: typeof MMenuAddonsRoute
+  MMenuApprovalRoute: typeof MMenuApprovalRoute
+  MMenuCategoriesRoute: typeof MMenuCategoriesRoute
+  MMenuCombosRoute: typeof MMenuCombosRoute
+  MMenuItemsRoute: typeof MMenuItemsRoute
+  MOrdersAllOrdersRoute: typeof MOrdersAllOrdersRoute
+  MOrdersDeliveryRoute: typeof MOrdersDeliveryRoute
+  MOrdersDineinRoute: typeof MOrdersDineinRoute
+  MOrdersRefundsRoute: typeof MOrdersRefundsRoute
+  MOrdersScheduledRoute: typeof MOrdersScheduledRoute
+  MOrdersTakeawayRoute: typeof MOrdersTakeawayRoute
+  MRestaurantAllRestaurantsRoute: typeof MRestaurantAllRestaurantsRoute
+  MRestaurantBranchesRoute: typeof MRestaurantBranchesRoute
+  MRestaurantCategoriesRoute: typeof MRestaurantCategoriesRoute
+  MRestaurantDashboardRoute: typeof MRestaurantDashboardRoute
+  MRestaurantOwnersRoute: typeof MRestaurantOwnersRoute
+  MRestaurantPendingApprovalsRoute: typeof MRestaurantPendingApprovalsRoute
+  MTablesQrOrderingRoute: typeof MTablesQrOrderingRoute
+  MTablesReservationsRoute: typeof MTablesReservationsRoute
+  MTablesTablesRoute: typeof MTablesTablesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +498,202 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/m/tables/tables': {
+      id: '/m/tables/tables'
+      path: '/m/tables/tables'
+      fullPath: '/m/tables/tables'
+      preLoaderRoute: typeof MTablesTablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/tables/reservations': {
+      id: '/m/tables/reservations'
+      path: '/m/tables/reservations'
+      fullPath: '/m/tables/reservations'
+      preLoaderRoute: typeof MTablesReservationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/tables/qr-ordering': {
+      id: '/m/tables/qr-ordering'
+      path: '/m/tables/qr-ordering'
+      fullPath: '/m/tables/qr-ordering'
+      preLoaderRoute: typeof MTablesQrOrderingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/restaurant/pending-approvals': {
+      id: '/m/restaurant/pending-approvals'
+      path: '/m/restaurant/pending-approvals'
+      fullPath: '/m/restaurant/pending-approvals'
+      preLoaderRoute: typeof MRestaurantPendingApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/restaurant/owners': {
+      id: '/m/restaurant/owners'
+      path: '/m/restaurant/owners'
+      fullPath: '/m/restaurant/owners'
+      preLoaderRoute: typeof MRestaurantOwnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/restaurant/dashboard': {
+      id: '/m/restaurant/dashboard'
+      path: '/m/restaurant/dashboard'
+      fullPath: '/m/restaurant/dashboard'
+      preLoaderRoute: typeof MRestaurantDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/restaurant/categories': {
+      id: '/m/restaurant/categories'
+      path: '/m/restaurant/categories'
+      fullPath: '/m/restaurant/categories'
+      preLoaderRoute: typeof MRestaurantCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/restaurant/branches': {
+      id: '/m/restaurant/branches'
+      path: '/m/restaurant/branches'
+      fullPath: '/m/restaurant/branches'
+      preLoaderRoute: typeof MRestaurantBranchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/restaurant/all-restaurants': {
+      id: '/m/restaurant/all-restaurants'
+      path: '/m/restaurant/all-restaurants'
+      fullPath: '/m/restaurant/all-restaurants'
+      preLoaderRoute: typeof MRestaurantAllRestaurantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/orders/takeaway': {
+      id: '/m/orders/takeaway'
+      path: '/m/orders/takeaway'
+      fullPath: '/m/orders/takeaway'
+      preLoaderRoute: typeof MOrdersTakeawayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/orders/scheduled': {
+      id: '/m/orders/scheduled'
+      path: '/m/orders/scheduled'
+      fullPath: '/m/orders/scheduled'
+      preLoaderRoute: typeof MOrdersScheduledRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/orders/refunds': {
+      id: '/m/orders/refunds'
+      path: '/m/orders/refunds'
+      fullPath: '/m/orders/refunds'
+      preLoaderRoute: typeof MOrdersRefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/orders/dinein': {
+      id: '/m/orders/dinein'
+      path: '/m/orders/dinein'
+      fullPath: '/m/orders/dinein'
+      preLoaderRoute: typeof MOrdersDineinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/orders/delivery': {
+      id: '/m/orders/delivery'
+      path: '/m/orders/delivery'
+      fullPath: '/m/orders/delivery'
+      preLoaderRoute: typeof MOrdersDeliveryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/orders/all-orders': {
+      id: '/m/orders/all-orders'
+      path: '/m/orders/all-orders'
+      fullPath: '/m/orders/all-orders'
+      preLoaderRoute: typeof MOrdersAllOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/menu/items': {
+      id: '/m/menu/items'
+      path: '/m/menu/items'
+      fullPath: '/m/menu/items'
+      preLoaderRoute: typeof MMenuItemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/menu/combos': {
+      id: '/m/menu/combos'
+      path: '/m/menu/combos'
+      fullPath: '/m/menu/combos'
+      preLoaderRoute: typeof MMenuCombosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/menu/categories': {
+      id: '/m/menu/categories'
+      path: '/m/menu/categories'
+      fullPath: '/m/menu/categories'
+      preLoaderRoute: typeof MMenuCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/menu/approval': {
+      id: '/m/menu/approval'
+      path: '/m/menu/approval'
+      fullPath: '/m/menu/approval'
+      preLoaderRoute: typeof MMenuApprovalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/menu/addons': {
+      id: '/m/menu/addons'
+      path: '/m/menu/addons'
+      fullPath: '/m/menu/addons'
+      preLoaderRoute: typeof MMenuAddonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/kitchen/live-orders': {
+      id: '/m/kitchen/live-orders'
+      path: '/m/kitchen/live-orders'
+      fullPath: '/m/kitchen/live-orders'
+      preLoaderRoute: typeof MKitchenLiveOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/kitchen/kds': {
+      id: '/m/kitchen/kds'
+      path: '/m/kitchen/kds'
+      fullPath: '/m/kitchen/kds'
+      preLoaderRoute: typeof MKitchenKdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/kitchen/chef-assignment': {
+      id: '/m/kitchen/chef-assignment'
+      path: '/m/kitchen/chef-assignment'
+      fullPath: '/m/kitchen/chef-assignment'
+      preLoaderRoute: typeof MKitchenChefAssignmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/customers/wallet': {
+      id: '/m/customers/wallet'
+      path: '/m/customers/wallet'
+      fullPath: '/m/customers/wallet'
+      preLoaderRoute: typeof MCustomersWalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/customers/support': {
+      id: '/m/customers/support'
+      path: '/m/customers/support'
+      fullPath: '/m/customers/support'
+      preLoaderRoute: typeof MCustomersSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/customers/rides': {
+      id: '/m/customers/rides'
+      path: '/m/customers/rides'
+      fullPath: '/m/customers/rides'
+      preLoaderRoute: typeof MCustomersRidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/customers/ratings': {
+      id: '/m/customers/ratings'
+      path: '/m/customers/ratings'
+      fullPath: '/m/customers/ratings'
+      preLoaderRoute: typeof MCustomersRatingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/customers/list': {
+      id: '/m/customers/list'
+      path: '/m/customers/list'
+      fullPath: '/m/customers/list'
+      preLoaderRoute: typeof MCustomersListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +703,34 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   SettingsRoute: SettingsRoute,
   MSplatRoute: MSplatRoute,
+  MCustomersListRoute: MCustomersListRoute,
+  MCustomersRatingsRoute: MCustomersRatingsRoute,
+  MCustomersRidesRoute: MCustomersRidesRoute,
+  MCustomersSupportRoute: MCustomersSupportRoute,
+  MCustomersWalletRoute: MCustomersWalletRoute,
+  MKitchenChefAssignmentRoute: MKitchenChefAssignmentRoute,
+  MKitchenKdsRoute: MKitchenKdsRoute,
+  MKitchenLiveOrdersRoute: MKitchenLiveOrdersRoute,
+  MMenuAddonsRoute: MMenuAddonsRoute,
+  MMenuApprovalRoute: MMenuApprovalRoute,
+  MMenuCategoriesRoute: MMenuCategoriesRoute,
+  MMenuCombosRoute: MMenuCombosRoute,
+  MMenuItemsRoute: MMenuItemsRoute,
+  MOrdersAllOrdersRoute: MOrdersAllOrdersRoute,
+  MOrdersDeliveryRoute: MOrdersDeliveryRoute,
+  MOrdersDineinRoute: MOrdersDineinRoute,
+  MOrdersRefundsRoute: MOrdersRefundsRoute,
+  MOrdersScheduledRoute: MOrdersScheduledRoute,
+  MOrdersTakeawayRoute: MOrdersTakeawayRoute,
+  MRestaurantAllRestaurantsRoute: MRestaurantAllRestaurantsRoute,
+  MRestaurantBranchesRoute: MRestaurantBranchesRoute,
+  MRestaurantCategoriesRoute: MRestaurantCategoriesRoute,
+  MRestaurantDashboardRoute: MRestaurantDashboardRoute,
+  MRestaurantOwnersRoute: MRestaurantOwnersRoute,
+  MRestaurantPendingApprovalsRoute: MRestaurantPendingApprovalsRoute,
+  MTablesQrOrderingRoute: MTablesQrOrderingRoute,
+  MTablesReservationsRoute: MTablesReservationsRoute,
+  MTablesTablesRoute: MTablesTablesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
