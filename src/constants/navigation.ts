@@ -23,6 +23,7 @@ import {
   FileSignature, FileBadge, FolderKanban,
   Settings, Palette, Languages, Clock, DatabaseZap,
   type LucideIcon,
+  ShoppingBasket
 } from "lucide-react";
 import type { Role } from "./roles";
 
@@ -42,6 +43,21 @@ const m = (slug: string, sub?: string) => (sub ? `/m/${slug}/${sub}` : `/m/${slu
 
 export const NAV_SECTIONS: NavSection[] = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
+  {
+    id: "pos",
+    label: "POS & Billing",
+    icon: ShoppingBasket,
+    children: [
+      { label: "Dashboard", path: m("pos", "dashboard") },
+      { label: "Billing Terminal", path: m("pos", "billing-terminal") },
+      { label: "Open Bills", path: m("pos", "open-bills") },
+      { label: "Hold Bills", path: m("pos", "hold-bills") },
+      { label: "Split Bills", path: m("pos", "split-bills") },
+      { label: "Merge Bills", path: m("pos", "merge-bills") },
+      { label: "Payments", path: m("pos", "payments") },
+      { label: "Shift Management", path: m("pos", "shift-management") },
+    ],
+  },
   // Restaurant & related modules
   {
     id: "restaurant",
@@ -74,7 +90,7 @@ export const NAV_SECTIONS: NavSection[] = [
     children: [
       { label: "Kitchen Display (KDS)", path: m("kitchen", "kds") },
       { label: "Live Orders", path: m("kitchen", "live-orders") },
-      { label: "Chef Assignment", path: m("kitchen", "assignments") },
+      { label: "Chef Assignment", path: m("kitchen", "chef-assignment") },
     ],
   },
   {
@@ -82,8 +98,8 @@ export const NAV_SECTIONS: NavSection[] = [
     label: "Order Management",
     icon: ClipboardList,
     children: [
-      { label: "All Orders", path: m("orders", "all") },
-      { label: "Dine-In Orders", path: m("orders", "dine-in") },
+      { label: "All Orders", path: m("orders", "all-orders") },
+      { label: "Dine-In Orders", path: m("orders", "dinein") },
       { label: "Delivery Orders", path: m("orders", "delivery") },
       { label: "Takeaway Orders", path: m("orders", "takeaway") },
       { label: "Scheduled Orders", path: m("orders", "scheduled") },
@@ -95,9 +111,9 @@ export const NAV_SECTIONS: NavSection[] = [
     label: "Table & Reservation",
     icon: CalendarRange,
     children: [
-      { label: "Tables", path: m("tables", "list") },
+      { label: "Tables", path: m("tables", "tables") },
       { label: "Reservations", path: m("tables", "reservations") },
-      { label: "QR Table Ordering", path: m("tables", "qr") },
+      { label: "QR Table Ordering", path: m("tables", "qr-ordering") },
     ],
   },
   {
@@ -386,14 +402,14 @@ export const NAV_SECTIONS: NavSection[] = [
 export const ROLE_MODULE_ACCESS: Record<Role, "all" | string[]> = {
   super_admin: "all",
   organization_owner: "all",
-  fleet_owner: ["dashboard", "fleet", "vehicles", "drivers", "reports", "finance", "settings"],
-  operations_manager: ["dashboard", "rides", "gps", "drivers", "vehicles", "fleet", "reports", "crm", "notifications"],
-  branch_manager: ["dashboard", "drivers", "vehicles", "rides", "reports", "hr", "crm"],
-  dispatch_manager: ["dashboard", "rides", "gps", "drivers", "notifications"],
-  finance_manager: ["dashboard", "finance", "payroll", "payments", "reports", "subscription", "procurement"],
+  fleet_owner: ["dashboard", "pos", "fleet", "vehicles", "drivers", "reports", "finance", "settings"],
+  operations_manager: ["dashboard", "pos", "rides", "gps", "drivers", "vehicles", "fleet", "reports", "crm", "notifications"],
+  branch_manager: ["dashboard", "pos", "drivers", "vehicles", "rides", "reports", "hr", "crm"],
+  dispatch_manager: ["dashboard", "pos", "rides", "gps", "drivers", "notifications"],
+  finance_manager: ["dashboard", "pos", "finance", "payroll", "payments", "reports", "subscription", "procurement"],
   hr_manager: ["dashboard", "hr", "payroll", "iam"],
   support_executive: ["dashboard", "crm", "customers", "notifications"],
-  bike_rental_staff: ["dashboard", "rental", "customers", "payments"],
+  bike_rental_staff: ["dashboard", "pos", "rental", "customers", "payments"],
   maintenance_staff: ["dashboard", "vehicles", "fleet", "rental", "assets"],
   driver: ["dashboard", "rides", "gps", "drivers"],
   customer: ["dashboard", "customers", "rides"],

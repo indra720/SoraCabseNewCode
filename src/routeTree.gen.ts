@@ -25,6 +25,14 @@ import { Route as MRestaurantDashboardRouteImport } from './routes/m/restaurant/
 import { Route as MRestaurantCategoriesRouteImport } from './routes/m/restaurant/categories'
 import { Route as MRestaurantBranchesRouteImport } from './routes/m/restaurant/branches'
 import { Route as MRestaurantAllRestaurantsRouteImport } from './routes/m/restaurant/all-restaurants'
+import { Route as MPosSplitBillsRouteImport } from './routes/m/pos/split-bills'
+import { Route as MPosShiftManagementRouteImport } from './routes/m/pos/shift-management'
+import { Route as MPosPaymentsRouteImport } from './routes/m/pos/payments'
+import { Route as MPosOpenBillsRouteImport } from './routes/m/pos/open-bills'
+import { Route as MPosMergeBillsRouteImport } from './routes/m/pos/merge-bills'
+import { Route as MPosHoldBillsRouteImport } from './routes/m/pos/hold-bills'
+import { Route as MPosDashboardRouteImport } from './routes/m/pos/dashboard'
+import { Route as MPosBillingTerminalRouteImport } from './routes/m/pos/billing-terminal'
 import { Route as MOrdersTakeawayRouteImport } from './routes/m/orders/takeaway'
 import { Route as MOrdersScheduledRouteImport } from './routes/m/orders/scheduled'
 import { Route as MOrdersRefundsRouteImport } from './routes/m/orders/refunds'
@@ -134,6 +142,46 @@ const MRestaurantAllRestaurantsRoute =
     path: '/m/restaurant/all-restaurants',
     getParentRoute: () => rootRouteImport,
   } as any)
+const MPosSplitBillsRoute = MPosSplitBillsRouteImport.update({
+  id: '/m/pos/split-bills',
+  path: '/m/pos/split-bills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MPosShiftManagementRoute = MPosShiftManagementRouteImport.update({
+  id: '/m/pos/shift-management',
+  path: '/m/pos/shift-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MPosPaymentsRoute = MPosPaymentsRouteImport.update({
+  id: '/m/pos/payments',
+  path: '/m/pos/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MPosOpenBillsRoute = MPosOpenBillsRouteImport.update({
+  id: '/m/pos/open-bills',
+  path: '/m/pos/open-bills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MPosMergeBillsRoute = MPosMergeBillsRouteImport.update({
+  id: '/m/pos/merge-bills',
+  path: '/m/pos/merge-bills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MPosHoldBillsRoute = MPosHoldBillsRouteImport.update({
+  id: '/m/pos/hold-bills',
+  path: '/m/pos/hold-bills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MPosDashboardRoute = MPosDashboardRouteImport.update({
+  id: '/m/pos/dashboard',
+  path: '/m/pos/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MPosBillingTerminalRoute = MPosBillingTerminalRouteImport.update({
+  id: '/m/pos/billing-terminal',
+  path: '/m/pos/billing-terminal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MOrdersTakeawayRoute = MOrdersTakeawayRouteImport.update({
   id: '/m/orders/takeaway',
   path: '/m/orders/takeaway',
@@ -297,6 +345,14 @@ export interface FileRoutesByFullPath {
   '/m/orders/refunds': typeof MOrdersRefundsRoute
   '/m/orders/scheduled': typeof MOrdersScheduledRoute
   '/m/orders/takeaway': typeof MOrdersTakeawayRoute
+  '/m/pos/billing-terminal': typeof MPosBillingTerminalRoute
+  '/m/pos/dashboard': typeof MPosDashboardRoute
+  '/m/pos/hold-bills': typeof MPosHoldBillsRoute
+  '/m/pos/merge-bills': typeof MPosMergeBillsRoute
+  '/m/pos/open-bills': typeof MPosOpenBillsRoute
+  '/m/pos/payments': typeof MPosPaymentsRoute
+  '/m/pos/shift-management': typeof MPosShiftManagementRoute
+  '/m/pos/split-bills': typeof MPosSplitBillsRoute
   '/m/restaurant/all-restaurants': typeof MRestaurantAllRestaurantsRoute
   '/m/restaurant/branches': typeof MRestaurantBranchesRoute
   '/m/restaurant/categories': typeof MRestaurantCategoriesRoute
@@ -341,6 +397,14 @@ export interface FileRoutesByTo {
   '/m/orders/refunds': typeof MOrdersRefundsRoute
   '/m/orders/scheduled': typeof MOrdersScheduledRoute
   '/m/orders/takeaway': typeof MOrdersTakeawayRoute
+  '/m/pos/billing-terminal': typeof MPosBillingTerminalRoute
+  '/m/pos/dashboard': typeof MPosDashboardRoute
+  '/m/pos/hold-bills': typeof MPosHoldBillsRoute
+  '/m/pos/merge-bills': typeof MPosMergeBillsRoute
+  '/m/pos/open-bills': typeof MPosOpenBillsRoute
+  '/m/pos/payments': typeof MPosPaymentsRoute
+  '/m/pos/shift-management': typeof MPosShiftManagementRoute
+  '/m/pos/split-bills': typeof MPosSplitBillsRoute
   '/m/restaurant/all-restaurants': typeof MRestaurantAllRestaurantsRoute
   '/m/restaurant/branches': typeof MRestaurantBranchesRoute
   '/m/restaurant/categories': typeof MRestaurantCategoriesRoute
@@ -386,6 +450,14 @@ export interface FileRoutesById {
   '/m/orders/refunds': typeof MOrdersRefundsRoute
   '/m/orders/scheduled': typeof MOrdersScheduledRoute
   '/m/orders/takeaway': typeof MOrdersTakeawayRoute
+  '/m/pos/billing-terminal': typeof MPosBillingTerminalRoute
+  '/m/pos/dashboard': typeof MPosDashboardRoute
+  '/m/pos/hold-bills': typeof MPosHoldBillsRoute
+  '/m/pos/merge-bills': typeof MPosMergeBillsRoute
+  '/m/pos/open-bills': typeof MPosOpenBillsRoute
+  '/m/pos/payments': typeof MPosPaymentsRoute
+  '/m/pos/shift-management': typeof MPosShiftManagementRoute
+  '/m/pos/split-bills': typeof MPosSplitBillsRoute
   '/m/restaurant/all-restaurants': typeof MRestaurantAllRestaurantsRoute
   '/m/restaurant/branches': typeof MRestaurantBranchesRoute
   '/m/restaurant/categories': typeof MRestaurantCategoriesRoute
@@ -432,6 +504,14 @@ export interface FileRouteTypes {
     | '/m/orders/refunds'
     | '/m/orders/scheduled'
     | '/m/orders/takeaway'
+    | '/m/pos/billing-terminal'
+    | '/m/pos/dashboard'
+    | '/m/pos/hold-bills'
+    | '/m/pos/merge-bills'
+    | '/m/pos/open-bills'
+    | '/m/pos/payments'
+    | '/m/pos/shift-management'
+    | '/m/pos/split-bills'
     | '/m/restaurant/all-restaurants'
     | '/m/restaurant/branches'
     | '/m/restaurant/categories'
@@ -476,6 +556,14 @@ export interface FileRouteTypes {
     | '/m/orders/refunds'
     | '/m/orders/scheduled'
     | '/m/orders/takeaway'
+    | '/m/pos/billing-terminal'
+    | '/m/pos/dashboard'
+    | '/m/pos/hold-bills'
+    | '/m/pos/merge-bills'
+    | '/m/pos/open-bills'
+    | '/m/pos/payments'
+    | '/m/pos/shift-management'
+    | '/m/pos/split-bills'
     | '/m/restaurant/all-restaurants'
     | '/m/restaurant/branches'
     | '/m/restaurant/categories'
@@ -520,6 +608,14 @@ export interface FileRouteTypes {
     | '/m/orders/refunds'
     | '/m/orders/scheduled'
     | '/m/orders/takeaway'
+    | '/m/pos/billing-terminal'
+    | '/m/pos/dashboard'
+    | '/m/pos/hold-bills'
+    | '/m/pos/merge-bills'
+    | '/m/pos/open-bills'
+    | '/m/pos/payments'
+    | '/m/pos/shift-management'
+    | '/m/pos/split-bills'
     | '/m/restaurant/all-restaurants'
     | '/m/restaurant/branches'
     | '/m/restaurant/categories'
@@ -565,6 +661,14 @@ export interface RootRouteChildren {
   MOrdersRefundsRoute: typeof MOrdersRefundsRoute
   MOrdersScheduledRoute: typeof MOrdersScheduledRoute
   MOrdersTakeawayRoute: typeof MOrdersTakeawayRoute
+  MPosBillingTerminalRoute: typeof MPosBillingTerminalRoute
+  MPosDashboardRoute: typeof MPosDashboardRoute
+  MPosHoldBillsRoute: typeof MPosHoldBillsRoute
+  MPosMergeBillsRoute: typeof MPosMergeBillsRoute
+  MPosOpenBillsRoute: typeof MPosOpenBillsRoute
+  MPosPaymentsRoute: typeof MPosPaymentsRoute
+  MPosShiftManagementRoute: typeof MPosShiftManagementRoute
+  MPosSplitBillsRoute: typeof MPosSplitBillsRoute
   MRestaurantAllRestaurantsRoute: typeof MRestaurantAllRestaurantsRoute
   MRestaurantBranchesRoute: typeof MRestaurantBranchesRoute
   MRestaurantCategoriesRoute: typeof MRestaurantCategoriesRoute
@@ -690,6 +794,62 @@ declare module '@tanstack/react-router' {
       path: '/m/restaurant/all-restaurants'
       fullPath: '/m/restaurant/all-restaurants'
       preLoaderRoute: typeof MRestaurantAllRestaurantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/split-bills': {
+      id: '/m/pos/split-bills'
+      path: '/m/pos/split-bills'
+      fullPath: '/m/pos/split-bills'
+      preLoaderRoute: typeof MPosSplitBillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/shift-management': {
+      id: '/m/pos/shift-management'
+      path: '/m/pos/shift-management'
+      fullPath: '/m/pos/shift-management'
+      preLoaderRoute: typeof MPosShiftManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/payments': {
+      id: '/m/pos/payments'
+      path: '/m/pos/payments'
+      fullPath: '/m/pos/payments'
+      preLoaderRoute: typeof MPosPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/open-bills': {
+      id: '/m/pos/open-bills'
+      path: '/m/pos/open-bills'
+      fullPath: '/m/pos/open-bills'
+      preLoaderRoute: typeof MPosOpenBillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/merge-bills': {
+      id: '/m/pos/merge-bills'
+      path: '/m/pos/merge-bills'
+      fullPath: '/m/pos/merge-bills'
+      preLoaderRoute: typeof MPosMergeBillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/hold-bills': {
+      id: '/m/pos/hold-bills'
+      path: '/m/pos/hold-bills'
+      fullPath: '/m/pos/hold-bills'
+      preLoaderRoute: typeof MPosHoldBillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/dashboard': {
+      id: '/m/pos/dashboard'
+      path: '/m/pos/dashboard'
+      fullPath: '/m/pos/dashboard'
+      preLoaderRoute: typeof MPosDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/pos/billing-terminal': {
+      id: '/m/pos/billing-terminal'
+      path: '/m/pos/billing-terminal'
+      fullPath: '/m/pos/billing-terminal'
+      preLoaderRoute: typeof MPosBillingTerminalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/m/orders/takeaway': {
@@ -909,6 +1069,14 @@ const rootRouteChildren: RootRouteChildren = {
   MOrdersRefundsRoute: MOrdersRefundsRoute,
   MOrdersScheduledRoute: MOrdersScheduledRoute,
   MOrdersTakeawayRoute: MOrdersTakeawayRoute,
+  MPosBillingTerminalRoute: MPosBillingTerminalRoute,
+  MPosDashboardRoute: MPosDashboardRoute,
+  MPosHoldBillsRoute: MPosHoldBillsRoute,
+  MPosMergeBillsRoute: MPosMergeBillsRoute,
+  MPosOpenBillsRoute: MPosOpenBillsRoute,
+  MPosPaymentsRoute: MPosPaymentsRoute,
+  MPosShiftManagementRoute: MPosShiftManagementRoute,
+  MPosSplitBillsRoute: MPosSplitBillsRoute,
   MRestaurantAllRestaurantsRoute: MRestaurantAllRestaurantsRoute,
   MRestaurantBranchesRoute: MRestaurantBranchesRoute,
   MRestaurantCategoriesRoute: MRestaurantCategoriesRoute,
