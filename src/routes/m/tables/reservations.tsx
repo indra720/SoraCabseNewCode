@@ -27,10 +27,10 @@ type Reservation = {
     status: 'confirmed' | 'pending' | 'cancelled';
 };
 
-// Generate 50 reservations
+// Generate 6 reservations
 function ReservationsPage() {
   const [search, setSearch] = useState("");
-  const res = useMemo(() => Array.from({ length: 50 }).map((_, i) => ({
+  const res = useMemo(() => Array.from({ length: 6 }).map((_, i) => ({
       id: `R-${200 + i}`,
       customerName: ["Ayesha Khan", "Rahul Jain", "Sneha Patel", "Vikram Rao", "Meera Nair", "Amit Singh"][i % 6],
       table: `T-${(i % 10) + 1}`,

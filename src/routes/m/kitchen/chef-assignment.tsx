@@ -20,64 +20,59 @@ export const Route = createFileRoute("/m/kitchen/chef-assignment")({
   ),
 });
 
-type Chef = {
-  id: string;
-  name: string;
-  specialization: string;
-  activeOrders: number;
-  status: "available" | "busy" | "off-duty";
-  station: string;
+type AssignmentStatus = "assigned" | "in-progress" | "completed" | "cancelled";
+
+type Assignment = {
+  id: string; // ASSIGNMENT_ID
+  chef: string; // CHEF
+  orderId: string; // ORDER_ID
+  status: AssignmentStatus; // STATUS
+  startedAt?: string; // STARTED_AT (ISO)
 };
 
-// Generate 6 chefs
-const sampleChefs: Chef[] = Array.from({ length: 6 }).map((_, i) => ({
-  id: `CHF-${100 + i}`,
-  name: ["Rajesh Kumar", "Sunita Sharma", "Anil Deshmukh", "Priya Singh", "Vikram Malhotra", "Meera Nair"][i % 6],
-  specialization: ["Main Course", "South Indian", "Chinese", "Desserts", "Tandoor", "Fast Food"][i % 6],
-  activeOrders: Math.floor(Math.random() * 5),
-  status: (["available", "busy", "off-duty"] as const)[i % 3],
-  station: ["Station A", "Station B", "Station C", "Station D"][i % 4],
-}));
+// Fixed sample assignments (5 rows) matching requested columns
+const sampleAssignments: Assignment[] = [
+  { id: `ASG-1001`, chef: "Rajesh Kumar", orderId: `ORD-9001`, status: "assigned", startedAt: new Date(Date.now() - 1000 * 60 * 30).toISOString() },
+  { id: `ASG-1002`, chef: "Sunita Sharma", orderId: `ORD-9002`, status: "in-progress", startedAt: new Date(Date.now() - 1000 * 60 * 45).toISOString() },
+  { id: `ASG-1003`, chef: "Anil Deshmukh", orderId: `ORD-9003`, status: "completed", startedAt: new Date(Date.now() - 1000 * 60 * 90).toISOString() },
+  { id: `ASG-1004`, chef: "Priya Singh", orderId: `ORD-9004`, status: "in-progress", startedAt: new Date(Date.now() - 1000 * 60 * 10).toISOString() },
+  { id: `ASG-1005`, chef: "Vikram Malhotra", orderId: `ORD-9005`, status: "cancelled", startedAt: new Date(Date.now() - 1000 * 60 * 120).toISOString() },
+];
 
 function ChefAssignmentPage() {
   const [query, setQuery] = useState("");
-  const [status, setStatus] = useState("all");
-  const [chefs, setChefs] = useState<Chef[]>(sampleChefs);
+  const [status, setStatus] = useState<AssignmentStatus | "all">("all");
+  const [assignments, setAssignments] = useState<Assignment[]>(sampleAssignments);
   const [addOpen, setAddOpen] = useState(false);
-  const [form, setForm] = useState<Partial<Chef>>({ status: "available", activeOrders: 0, station: "Station A" });
+  const [form, setForm] = useState<Partial<Assignment>>({ status: "assigned", chef: "", orderId: "", startedAt: new Date().toISOString() });
 
   const filtered = useMemo(
     () =>
-      chefs.filter((chef) => {
-        if (status !== "all" && chef.status !== status) return false;
+      assignments.filter((a) => {
+        if (status !== "all" && a.status !== status) return false;
         const search = query.trim().toLowerCase();
         if (!search) return true;
-        return (
-          chef.name.toLowerCase().includes(search) ||
-          chef.specialization.toLowerCase().includes(search) ||
-          chef.station.toLowerCase().includes(search)
-        );
+        return a.id.toLowerCase().includes(search) || a.chef.toLowerCase().includes(search) || a.orderId.toLowerCase().includes(search);
       }),
-    [chefs, query, status],
+    [assignments, query, status],
   );
 
   const handleSave = () => {
-    const newChef: Chef = {
-      id: `CHF-${Math.floor(1000 + Math.random() * 9000)}`,
-      name: form.name || "New Chef",
-      specialization: form.specialization || "General",
-      activeOrders: form.activeOrders || 0,
-      status: form.status || "available",
-      station: form.station || "Station A",
+    const newAssignment: Assignment = {
+      id: `ASG-${Math.floor(1000 + Math.random() * 9000)}`,
+      chef: form.chef || "Unassigned",
+      orderId: form.orderId || `ORD-${Math.floor(9000 + Math.random() * 9000)}`,
+      status: (form.status as AssignmentStatus) || "assigned",
+      startedAt: form.startedAt || new Date().toISOString(),
     };
-    setChefs((prev) => [newChef, ...prev]);
+    setAssignments((prev) => [newAssignment, ...prev]);
     setAddOpen(false);
-    setForm({ status: "available", activeOrders: 0, station: "Station A" });
+    setForm({ status: "assigned", chef: "", orderId: "", startedAt: new Date().toISOString() });
   };
 
-  const deleteChef = (id: string) => {
-    if (!confirm("Remove this chef?")) return;
-    setChefs((prev) => prev.filter((c) => c.id !== id));
+  const deleteAssignment = (id: string) => {
+    if (!confirm("Remove this assignment?")) return;
+    setAssignments((prev) => prev.filter((c) => c.id !== id));
   };
 
   return (
@@ -113,39 +108,30 @@ function ChefAssignmentPage() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Chef</TableHead>
-              <TableHead>ID</TableHead>
-              <TableHead>Specialization</TableHead>
-              <TableHead>Station</TableHead>
-              <TableHead>Active Orders</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead>ASSIGNMENT_ID</TableHead>
+              <TableHead>CHEF</TableHead>
+              <TableHead>ORDER_ID</TableHead>
+              <TableHead>STATUS</TableHead>
+              <TableHead>STARTED_AT</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filtered.map((chef) => (
-              <TableRow key={chef.id}>
+            {filtered.map((a) => (
+              <TableRow key={a.id}>
+                <TableCell className="font-medium">{a.id}</TableCell>
+                <TableCell>{a.chef}</TableCell>
+                <TableCell className="text-muted-foreground">{a.orderId}</TableCell>
                 <TableCell>
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10">
-                      <AvatarFallback>{chef.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div className="font-medium">{chef.name}</div>
-                  </div>
-                </TableCell>
-                <TableCell className="text-muted-foreground">{chef.id}</TableCell>
-                <TableCell>{chef.specialization}</TableCell>
-                <TableCell>{chef.station}</TableCell>
-                <TableCell>{chef.activeOrders}</TableCell>
-                <TableCell>
-                  <Badge variant={chef.status === "available" ? "success" : chef.status === "busy" ? "warning" : "secondary" as any}>
-                    {chef.status.toUpperCase()}
+                  <Badge variant={a.status === "completed" ? "success" : a.status === "in-progress" ? "warning" : a.status === "cancelled" ? "destructive" : "secondary" as any}>
+                    {a.status.toUpperCase()}
                   </Badge>
                 </TableCell>
+                <TableCell>{a.startedAt ? new Date(a.startedAt).toLocaleString() : "-"}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
                     <Button variant="ghost" size="icon"><Edit className="h-4 w-4" /></Button>
-                    <Button variant="ghost" size="icon" onClick={() => deleteChef(chef.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                    <Button variant="ghost" size="icon" onClick={() => deleteAssignment(a.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
                   </div>
                 </TableCell>
               </TableRow>

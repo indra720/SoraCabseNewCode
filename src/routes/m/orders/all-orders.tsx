@@ -61,9 +61,10 @@ const typeOptions: { label: string; value: OrderType | "all" }[] = [
   { label: "Takeaway", value: "takeaway" },
 ];
 
-const sampleOrders: Order[] = Array.from({ length: 45 }).map((_, index) => ({
+// Generate 6 orders
+const sampleOrders: Order[] = Array.from({ length: 6 }).map((_, index) => ({
   id: `ORD-${5000 + index}`,
-  customerName: ["Ayesha Khan", "Rahul Jain", "Sneha Patel", "Vikram Rao"][index % 4],
+  customerName: ["Ayesha Khan", "Rahul Jain", "Sneha Patel", "Vikram Rao", "Meera Nair", "Amit Singh"][index % 6],
   customerPhone: `+91 9${Math.floor(100000000 + Math.random() * 900000000)}`,
   restaurantName: ["Sora Bistro", "Pizza Palace", "Tandoor Express", "Burger King"][index % 4],
   total: Math.round(200 + Math.random() * 1500),

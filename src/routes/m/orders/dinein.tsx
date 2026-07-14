@@ -25,8 +25,8 @@ type DineInOrder = {
   orderTime: string;
 };
 
-// Generate 50 orders
-const sampleOrders: DineInOrder[] = Array.from({ length: 50 }).map((_, i) => ({
+// Generate 6 orders
+const sampleOrders: DineInOrder[] = Array.from({ length: 6 }).map((_, i) => ({
   id: `DIN-${200 + i}`,
   table: `T-${(i % 10) + 1}`,
   guests: 2 + (i % 4),

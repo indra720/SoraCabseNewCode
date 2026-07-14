@@ -18,8 +18,8 @@ export const Route = createFileRoute("/m/tables/qr-ordering")({
 
 function QROrdering() {
   const [search, setSearch] = useState("");
-  // Generate 50 tables
-  const tables = useMemo(() => Array.from({ length: 50 }).map((_, i) => ({
+  // Generate 6 tables
+  const tables = useMemo(() => Array.from({ length: 6 }).map((_, i) => ({
       id: `T-${i + 1}`,
       seats: (i % 6) + 2,
       qr: `${location.origin}/qr/T-${i + 1}`,
