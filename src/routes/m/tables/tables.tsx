@@ -25,10 +25,10 @@ type TableItem = {
     zone: 'Indoor' | 'Outdoor' | 'VIP';
 };
 
-// Generate 50 tables
+// Generate 6 tables
 function TablesPage() {
   const [search, setSearch] = useState("");
-  const tables = useMemo(() => Array.from({ length: 50 }).map((_, i) => ({
+  const tables = useMemo(() => Array.from({ length: 6 }).map((_, i) => ({
     id: `T-${i + 1}`,
     seats: (i % 6) + 2,
     status: i % 4 === 0 ? 'reserved' : i % 4 === 1 ? 'occupied' : 'available' as 'reserved' | 'available' | 'occupied',
